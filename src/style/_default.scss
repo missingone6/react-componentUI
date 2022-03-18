@@ -1,0 +1,45 @@
+// 字体大小
+$font-size-base:1rem !default;
+$font-size-unit:0.0625rem !default;//1px
+$font-size-larger:$font-size-base * 1.25!default;
+$font-size-smaller:$font-size-base * 0.75!default;
+
+
+// 字重
+$font-weight-lighter:lighter!default;
+$font-weight-light:300!default;
+$font-weight-normal: 400!default;
+$font-weight-bold: 700!default;
+$font-weight-bolder: bolder!default;
+$font-weight-base:$font-weight-normal!default;
+
+// 行高
+$line-height-smaller:1.8!default;
+$line-height-base:1.5!default;
+$line-height-larger:1.3!default;
+
+// 标题大小
+$h1-font-size:$font-size-base*2.5!default;
+$h2-font-size:$font-size-base*2!default;
+$h3-font-size:$font-size-base*1.75!default;
+$h4-font-size:$font-size-base*1.5!default;
+$h5-font-size:$font-size-base*1.25!default;
+$h6-font-size:$font-size-base!default;
+
+
+// 链接
+$link-color:$primary!default;
+$link-decoration:none!default;
+$link-hover-color:darken($link-color,15%)!default;
+$link-hover-decoration:underline!default;
+
+// body
+$body-bg:$white!default;
+$body-color:$gray!default;
+$body-text-align:null!default;
+
+// input组件
+$input-lg:40px!default;
+$input-sm:24px!default;
+$input-df:32px!default;
+

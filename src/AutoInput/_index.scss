@@ -1,0 +1,60 @@
+.autoInput-wrapper {
+  display: inline-block;
+  width: 302px;
+  cursor: pointer;
+  .bottomPart {
+    position: relative;
+    max-height: 152px;
+
+    ul::-webkit-scrollbar {
+      width: 0 !important ;
+    }
+    .triangle {
+      &::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 30px;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-bottom-color: $gray-300;
+      }
+      &::after {
+        content: "";
+        z-index: 2;
+        position: absolute;
+        top: -8px;
+        left: 30px;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-bottom-color: $white;
+      }
+    }
+
+    ul {
+      position: absolute;
+      z-index: 1;
+      background-color: $white;
+      max-height: 150px;
+      width: 100%;
+      overflow-y: scroll;
+      border: 1px solid $gray-300;
+      border-radius: 5px;
+      color: $gray-1200;
+      li {
+        height: 25px;
+        padding-left: 10px;
+        // 超出一行省略表示
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+        &.hover {
+          background-color: $gray-100;
+        }
+      }
+    }
+  }
+}

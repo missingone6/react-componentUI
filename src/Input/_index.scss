@@ -1,0 +1,88 @@
+.disabled {
+  cursor: not-allowed!important;
+}
+.input-wrapper {
+  position: relative;
+  height: 100%;
+  border: 1px solid $gray-300;
+  border-radius: 4px;
+
+  display: inline-block;
+  .middleBox {
+    position: relative;
+  }
+  .fl {
+    float: left;
+  }
+  .prefixString,
+  .postfixString {
+    padding: 0 8px;
+    height: 100%;
+    background-color: $gray-100;
+  }
+
+  .prefixIcon,
+  .postfixIcon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $black;
+    cursor: pointer;
+    &:hover {
+      color: $pink;
+    }
+    &:active {
+      color: $black;
+    }
+  }
+  .prefixIcon {
+    float: left;
+    left: 8px;
+  }
+  .postfixIcon {
+    float: right;
+    right: 8px;
+  }
+}
+
+.input-wrapper::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.my-input {
+  width: 100%;
+  display: inline-block;
+  font-size: 14px;
+  padding: 4px 20px;
+  line-height: $input-df;
+  height: $input-df;
+  box-sizing: border-box;
+  border: 1px solid $gray-300;
+  outline: none;
+  transition: 0.4s;
+  &:hover {
+    border-color: $blue;
+  }
+  &:focus {
+    border-color: $blue;
+    box-shadow: zero zero 5px $lightblue;
+  }
+}
+
+.input-large {
+  height: $input-lg;
+  line-height: $input-lg;
+  font-size: 16px;
+}
+.input-small {
+  height: $input-sm;
+  line-height: $input-sm;
+  font-size: 14px;
+}
+.input-middle {
+  height: $input-df;
+  line-height: $input-df;
+  font-size: 14px;
+}

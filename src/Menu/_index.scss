@@ -1,0 +1,134 @@
+// 默认即为.menu-vertical样式
+.menu-vertical {
+  .subMenu-icon{
+    margin-left: 10px;
+  }
+  // height: 60px;
+  padding: 0;
+  margin: 0;
+  line-height: 60px;
+  color: $white;
+  font-size: $font-size-larger;
+  cursor: pointer;
+  background-color: $gray-1000;
+  .menuItem {
+    &:hover {
+      background-color: $black;
+      .subMenu-icon{
+        transform: rotate(180deg);
+        transition: transform .4s ease-in;
+      }
+    }
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    padding: 0 20px;
+    list-style: none;
+    //----
+    &.menu-active {
+      color: $red !important;
+      border-bottom: 3px solid $yellow;
+      .subMenu-title {
+        color: $red !important;
+      }
+    }
+
+    // // 子菜单
+    .subMenu-ul {
+      z-index: 1;
+      // display: none;
+      visibility: hidden;
+
+      opacity: 0;
+      font-size: $font-size-base;
+      position: absolute;
+      left: 0;
+      padding: 0;
+      width: 200px;
+      background-color: $gray-1000;
+      color: $white;
+      
+      .menuItem {
+        display: block;
+      }
+      .menu-active {
+        border: none;
+        color: $red !important;
+      }
+    }
+    &:hover .subMenu-ul {
+      // display: block;
+      visibility: visible;
+
+      opacity: 1;
+      transition: opacity .4s ease-in;
+      
+    }
+  }
+}
+
+.menu-disable {
+  cursor: not-allowed;
+}
+
+.menu-horizontal {
+  .subMenu-icon{
+    margin-left: 10px;
+  }
+  height: auto;
+  padding: 0;
+  margin: 0;
+  text-indent: 0.4em;
+  line-height: 60px;
+  color: $white;
+  font-size: $font-size-larger;
+  background-color: $gray-1000;
+  cursor: pointer;
+
+  .menuItem {
+    position: relative;
+    display: block;
+    &:hover {
+      background-color: $black;
+      .subMenu-icon{
+        transform: rotate(180deg);
+        transition: transform .4s ease-in;
+      }
+    }
+    &.menu-active {
+      color: $red !important;
+      border-left: 3px solid $yellow;
+      border-bottom: none;
+      .subMenu-title {
+        color: $red !important;
+      }
+    }
+    // // 子菜单
+    .subMenu-ul {
+      z-index: 1;
+      display: none;
+      font-size: $font-size-base;
+      position: relative;
+      left: 0;
+      padding: 0;
+      width: 100%;
+      // background-color: $gray-1000;
+      color: $white;
+      .menuItem {
+        display: block;
+        padding-left: 20px;
+      }
+      .menu-active {
+        border: none;
+        // color: $white;
+        color: $red !important;
+      }
+    }
+    &:hover .subMenu-ul {
+      display: block;
+    }
+  }
+}
+
+

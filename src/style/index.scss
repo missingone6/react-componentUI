@@ -1,0 +1,25 @@
+body {
+  user-select: none;
+}
+
+@import "color";
+@import "default";
+@import "normalize";
+
+// button
+@import "../Button/index";
+
+// Menu
+@import "../Menu/index";
+
+// Icon
+@import "../Icon/index";
+
+// Input
+@import "../Input/index";
+
+// autoInput
+@import "../autoInput/index";
+
+// UpLoad
+@import "../UpLoad/index";
