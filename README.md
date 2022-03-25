@@ -1,4 +1,4 @@
-# react-ts-antd
+# react-componentUi
 
 这是一款基于react hooks+ts开发的常用的ui组件。项目已发布到npm。
 
