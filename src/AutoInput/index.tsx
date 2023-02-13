@@ -6,8 +6,11 @@ import Input, { InputSize, IInputProps } from '../Input';
 import useDidUpdateEffect from '../hooks/useDidUpdateEffect';
 import useDebounce from '../hooks/useDebounce';
 import useClickExceptA from '../hooks/useClickExceptA';
+import usePropsValue from '../hooks/usePropsValue';
 
-interface IAutoIconProps extends IInputProps {
+interface IAutoIconProps extends Omit<IInputProps, 'onChange'> {
+  value?: string,
+  onChange?: (value: string) => void
   className?: string;
   children?: React.ReactNode,
   style?: React.CSSProperties,
@@ -31,13 +34,17 @@ const AutoInput: React.FC<IAutoIconProps> = (props) => {
     select,
     triggerOnFocus,
     createMenus,
+    value,
+    onChange,
     ...AutoInputEvent
   } = props;
 
   const classAutoInput = classNames('my-autoInput', className, {
 
   });
-  const [autoInputValue, setAutoInputValue] = useState<string>("");
+  const [autoInputValue, setAutoInputValue] = usePropsValue<string>({
+    value, onChange
+  });
   const [suggestions, setSuggestions] = useState<string[]>();
   const [selectIndex, setSelectIndex] = useState<number>(0);
 
@@ -61,7 +68,7 @@ const AutoInput: React.FC<IAutoIconProps> = (props) => {
           setSuggestions(v)
         }
       ).catch(e => {
-        throw "autoInput组件fetchSuggestions函数出错，报错信息为" + e;
+        throw "autoInput组件fetchSuggestions函数出错,报错信息为" + e;
       })
     } else {
       setSuggestions(returnSuggestions);
@@ -138,9 +145,9 @@ const AutoInput: React.FC<IAutoIconProps> = (props) => {
           placeholder="请输入"
           value={autoInputValue}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const { value } = e.target;
-              setAutoInputValue(value);
-              lastClickWasMenu.current = false;
+            const { value } = e.target;
+            setAutoInputValue(value);
+            lastClickWasMenu.current = false;
           }}
           onKeyUp={handleKeyup}
           {...AutoInputEvent}

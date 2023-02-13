@@ -37,7 +37,7 @@ interface IUpload {
    * 上传文件之前的钩子，参数为上传的文件，
    * 若返回 false 或者返回 Promise 且被 reject，则停止上传。
    */
-  beforeUpload?: (file: File[]) => boolean | Promise<void>
+  beforeUpload?: (file: File) => boolean | Promise<void>
   /**
    * 文件上传时的钩子
    */
@@ -97,6 +97,7 @@ const Upload: React.FC<IUpload> = (props) => {
   const [filesList, setFilesList] = useState<FileListTypes[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const classUpload = classNames('my-upLoad', className);
+  
 
   const axiosPost = (fileItem: File, id: string) => {
     const uploadFilesList = (id: string, uploadObj: Partial<FileListTypes>): void => {
@@ -115,6 +116,7 @@ const Upload: React.FC<IUpload> = (props) => {
     }
     const formData = new FormData();
     formData.append(fileItem.name, fileItem);
+    console.log(formData)
     axios.post(action, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -156,6 +158,7 @@ const Upload: React.FC<IUpload> = (props) => {
     })
   }
 
+
   const createFileToFileList = (file: File, id: string) => {
 
     const newFile: FileListTypes = {
@@ -182,7 +185,7 @@ const Upload: React.FC<IUpload> = (props) => {
       filesArray.forEach(file => {
         // 调用用户传入的函数
         if (beforeUpload) {
-          let returnValue = beforeUpload(filesArray)
+          let returnValue = beforeUpload(file)
           if (returnValue instanceof Promise) {
             returnValue.then(() => {
               const id = Date.now() + file.name + file.size;
@@ -257,6 +260,8 @@ const Upload: React.FC<IUpload> = (props) => {
           ref={inputRef}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const { files } = e.target;
+            console.log(files);
+            console.log(e.target);
             if (files) {
               handleOnChange(files);
             }
